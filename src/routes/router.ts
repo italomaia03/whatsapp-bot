@@ -1,13 +1,12 @@
-import { Request, Response, Router } from "express";
+import { Router } from "express";
+import { ValidateWebhookController } from "../controllers/validate-webhook.controller";
+import { ValidateWebhookService } from "../services/validate-webhook.service";
 
 const router = Router();
+const valideWebhookController = new ValidateWebhookController(
+  new ValidateWebhookService(),
+);
 
-router.get("/verify-webhook", (req: Request, _res: Response) => {
-  console.log(req.query);
-});
+router.get("/verify-webhook", valideWebhookController.handle);
 
 export { router };
-
-router.get("/", (_req: Request, _res: Response) => {
-  console.log("test");
-});
