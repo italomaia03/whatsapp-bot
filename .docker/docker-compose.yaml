@@ -1,18 +1,14 @@
 services:
-  n8n:
-    image: docker.n8n.io/n8nio/n8n
-    restart: always
-    ports: 
-      - 5678:5678
-    environment:
-      - N8N_TEMPLATES_ENABLED=false
-      - N8N_DIAGNOSTICS_ENABLED=false
-      - N8N_VERSION_NOTIFICATIONS_ENABLED=false
-      - N8N_DEV_RELOAD=true
-      - GENERIC_TIMEZONE=AMERICA/FORTALEZA
-      - TZ=AMERICA/FORTALEZA
-    command: start --tunnel
+  ngrok:
+    image: ngrok/ngrok
+    stdin_open: true
+    tty: true
+    command: 
+      - "start"
+      - "--all"
+      - "--config"
+      - "/etc/ngrok.yml"
     volumes:
-      - ./n8n/data:/home/node/.n8n
-volumes:
-  n8n:
+      - ./ngrok/ngrok.yml:/etc/ngrok.yml
+    ports:
+      - 4040:4040
