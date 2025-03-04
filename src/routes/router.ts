@@ -3,10 +3,11 @@ import { ValidateWebhookController } from "../controllers/validate-webhook.contr
 import { ValidateWebhookService } from "../services/validate-webhook.service";
 
 const router = Router();
+const validateWebhookService = new ValidateWebhookService();
 const valideWebhookController = new ValidateWebhookController(
-  new ValidateWebhookService(),
+  validateWebhookService
 );
 
-router.get("/verify-webhook", valideWebhookController.handle);
+router.get("/verify-webhook", (req, res) => valideWebhookController.handle(req, res));
 
 export { router };
