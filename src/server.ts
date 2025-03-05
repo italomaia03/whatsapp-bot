@@ -1,5 +1,5 @@
 import { app } from "./app";
-import { env } from "./config/env.config";
+import { env } from "./whatsapp-api/config/env.config";
 
 const start = () => {
     return app.listen(env.PORT, () => {

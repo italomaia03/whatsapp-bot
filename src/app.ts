@@ -1,5 +1,5 @@
 import e, { Express } from "express";
-import { router } from "./routes/router";
+import { router } from "./whatsapp-api/routes/router";
 
 const app: Express = e();
 
