@@ -1,6 +1,6 @@
 import { MessageTypesEnum } from "../enums/message-types.enum";
 
-export type Message = {
+export type WhatsAppMessage = {
     messaging_product: string;
     to: string;
     type: MessageTypesEnum;
@@ -59,7 +59,7 @@ export type ReceivedMessageContact = {
     wa_id: string;
 }
 
-export type ReceivedMessage = Omit<Message, 'messaging_product' | 'to'>;
+export type ReceivedMessage = Omit<WhatsAppMessage, 'messaging_product' | 'to'>;
 
 export type ReceivedMessageMetadata = {
     display_phone_number: string;
